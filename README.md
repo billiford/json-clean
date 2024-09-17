@@ -3,9 +3,9 @@
 A stupid simple binary that removes characters from JSON that are formatted to be logged within a JSON log. 
 I have set Spring Boot to log in JSON format, so the output of a logged JSON payload looks something like:
 ```
-'{\n  \"field1\" : \"value1\",\n  \"field2\" : 123.5\n}'
+{\n  \"field1\" : \"value1\",\n  \"field2\" : 123.5\n}
 ```
-If we pipe this to `json-clean` it will remove all backslash (`\`) characters along with any characters that do
+If we pipe this to `json-clean` it will remove all backslash (`\`) characters, whitespace (` `), along with any characters that do
 not belong outside of double quotes (in this case the letter `n`).
 ```sh
 $ echo '{\n  \"field1\" : \"value1\",\n  \"field2\" : 123.5\n}' | jc

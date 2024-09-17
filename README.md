@@ -19,3 +19,8 @@ $ echo '{\n  \"field1\" : \"value1\",\n  \"field2\" : 123.5\n}' | jc | jq
   "field2": 123.5
 }
 ```
+### Install
+Clone the repo then run
+```sh
+$ go build -o $GOPATH/bin/jc
+```

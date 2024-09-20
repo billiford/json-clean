@@ -14,20 +14,23 @@ func clean(input string) string {
 	var insideQuotes bool
 	var output string
 
-	for _, c := range input {
-		if c == '\\' {
-			continue
+	for i, c := range input {
+		append := true
+		if c == '\\' && i > 0 && input[i-1] != '\\' {
+			append = false
 		}
 
-		if c == '"' {
+		if c == '"' && i > 1 && input[i-1] == '\\' && input[i-2] != '\\' {
 			insideQuotes = !insideQuotes
 		}
 
 		if !insideQuotes && !strings.ContainsRune(allowedCharacters, c) {
-			continue
+			append = false
 		}
 
-		output += string(c)
+		if append {
+			output += string(c)
+		}
 	}
 
 	return output
